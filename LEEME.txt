@@ -1,0 +1,51 @@
+TRANSCRIPTOR EN VIVO (Linux)
+============================
+
+Escucha lo que suena en el PC (parlantes o audífonos, no el micrófono),
+lo transcribe en inglés y lo guarda en un .txt mientras reproduces el audio.
+Funciona sin internet una vez instalado.
+
+INSTALACIÓN (una sola vez)
+--------------------------
+1. Pon esta carpeta en tu equipo (por ejemplo, en Descargas).
+2. Abre una terminal en la carpeta y ejecuta:
+       bash instalar.sh
+3. Cierra y vuelve a abrir la terminal.
+
+USO
+---
+1. En una terminal escribe:
+       transcribir
+2. Deja esa ventana abierta (puede quedar al costado o minimizada).
+3. Reproduce el audio en la página web.
+4. El texto aparece en la terminal y se guarda en:
+       ~/Transcripciones/transcripcion_FECHA_HORA.txt
+5. Al terminar presiona Ctrl+C. Se transcribe lo último y se cierra.
+6. Me pasas ese .txt (o lo pegas en el chat) y lo trabajamos.
+
+OPCIONES ÚTILES
+---------------
+  transcribir --marcas              agrega marcas de tiempo [mm:ss]
+  transcribir --modelo small.en     más preciso, pero más lento
+  transcribir --modelo tiny.en      más rápido, menos preciso
+  transcribir --salida ~/clase.txt  elige dónde guardar el .txt
+  transcribir --archivo audio.mp3   transcribe un archivo completo
+  transcribir --listar-fuentes      muestra las salidas de audio
+  transcribir --probar-con audio.mp3  simula el modo en vivo con un archivo
+
+QUÉ MODELO USAR EN TU PORTÁTIL (Ryzen 3 4300U, sin GPU)
+-------------------------------------------------------
+  base.en  (por defecto)  buen equilibrio, va al ritmo del audio sin problema.
+  small.en                notablemente más preciso; puede quedar unos segundos
+                          atrasado, pero no pierde audio (lo va acumulando).
+  tiny.en                 solo si el equipo está muy cargado.
+Nota: small.en se descarga la primera vez que lo uses (~480 MB).
+
+SI NO APARECE TEXTO
+-------------------
+- Revisa que el audio realmente esté sonando (volumen del sistema > 0).
+- Ejecuta "transcribir --listar-fuentes" y usa la que termina en ".monitor"
+  de tus audífonos o parlantes:
+       transcribir --fuente NOMBRE_DE_LA_FUENTE.monitor
+- Si el audio es muy bajo, baja el umbral de silencio:
+       transcribir --umbral 0.003
